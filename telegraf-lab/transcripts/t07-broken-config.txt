@@ -1,0 +1,11 @@
+== configs/broken.conf names an input plugin that does not exist: cpuu ==
+2026-11-07T21:51:41Z W! Strict environment variable handling is the new default starting with v1.38.0! If your configuration does not work with strict handling please explicitly add the --non-strict-env-handling flag to switch to the previous behavior!
+2026-11-07T21:51:41Z I! Loading config: configs/broken.conf
+2026-11-07T21:51:41Z E! loading config file configs/broken.conf failed: error parsing cpuu, undefined but requested input: cpuu
+exit=1
+
+== a TOML syntax error (missing bracket), written to outputs/ for this test ==
+2026-11-07T21:51:42Z W! Strict environment variable handling is the new default starting with v1.38.0! If your configuration does not work with strict handling please explicitly add the --non-strict-env-handling flag to switch to the previous behavior!
+2026-11-07T21:51:42Z I! Loading config: outputs/broken-toml.conf
+2026-11-07T21:51:42Z E! loading config file outputs/broken-toml.conf failed: error parsing data: line 2: invalid TOML syntax
+exit=1

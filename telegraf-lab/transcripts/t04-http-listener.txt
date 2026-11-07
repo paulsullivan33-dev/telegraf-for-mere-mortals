@@ -1,0 +1,12 @@
+== live run: configs/http.conf, listener on 127.0.0.1:18083, 8 seconds ==
+2026-11-07T21:51:08Z I! [inputs.http_listener_v2] Listening on 127.0.0.1:18083
+
+== POST one line-protocol point ==
+HTTP status: 204
+
+== POST a malformed line ==
+HTTP status: 400
+
+outputs/http.lp:
+noticeboard_post,host=boardwalk-01,room=hall-a,sensor=door-01 opens=3i,temperature_c=22.1 1794088200000000000
+agent stopped by timeout

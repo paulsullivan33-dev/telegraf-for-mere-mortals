@@ -1,0 +1,5 @@
+[
+  {"sensor": "temp-north", "room": "hall-a", "temperature_c": 21.5, "humidity_pct": 44, "battery_pct": 87},
+  {"sensor": "temp-south", "room": "hall-b", "temperature_c": 23.0, "humidity_pct": 41, "battery_pct": 92},
+  {"sensor": "door-counter", "room": "lobby", "opens": 17, "battery_pct": 78}
+]

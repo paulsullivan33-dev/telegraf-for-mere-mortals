@@ -1,0 +1,19 @@
+== configs/flush.conf: gather every 1s, flush every 3s, run 11 seconds ==
+== polling the output file once a second: watch it grow in batches ==
+t=+0 s  lines in outputs/flush.lp: 0
+t=+1 s  lines in outputs/flush.lp: 0
+t=+2 s  lines in outputs/flush.lp: 0
+t=+3 s  lines in outputs/flush.lp: 0
+t=+4 s  lines in outputs/flush.lp: 2
+t=+5 s  lines in outputs/flush.lp: 2
+t=+6 s  lines in outputs/flush.lp: 2
+t=+7 s  lines in outputs/flush.lp: 6
+t=+8 s  lines in outputs/flush.lp: 6
+t=+9 s  lines in outputs/flush.lp: 6
+t=+10 s  lines in outputs/flush.lp: 9
+agent stopped by timeout
+final line count: 10
+first lines:
+cpu,cpu=cpu-total,host=boardwalk-01 usage_steal=0.9900990099066321,usage_system=4.207920792080323,usage_idle=55.69306930721957,usage_guest=0,usage_guest_nice=0,usage_active=44.30693069278043,usage_user=37.87128712892551,usage_nice=0,usage_iowait=0.990099009905225,usage_irq=0,usage_softirq=0.24752475247630626 1794088292000000000
+cpu,cpu=cpu-total,host=boardwalk-01 usage_system=9.13461538461034,usage_idle=51.442307692250516,usage_guest=0,usage_active=48.557692307749484,usage_user=37.259615384566615,usage_nice=0,usage_iowait=1.2019230769264404,usage_irq=0,usage_softirq=0.4807692307683899,usage_steal=0.4807692307683899,usage_guest_nice=0 1794088293000000000
+cpu,cpu=cpu-total,host=boardwalk-01 usage_steal=1.5624999999896378,usage_guest_nice=0,usage_active=68.74999999990526,usage_user=42.70833333303332,usage_idle=31.25000000009474,usage_irq=0,usage_softirq=0.7812499999940788,usage_guest=0,usage_system=13.541666666587718,usage_nice=0,usage_iowait=10.156249999917103 1794088294000000000

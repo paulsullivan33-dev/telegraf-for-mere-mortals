@@ -1,0 +1,48 @@
+== live run: configs/system.conf for 9 seconds (timeout stops it) ==
+2026-11-07T21:50:53Z W! Strict environment variable handling is the new default starting with v1.38.0! If your configuration does not work with strict handling please explicitly add the --non-strict-env-handling flag to switch to the previous behavior!
+2026-11-07T21:50:53Z I! Loading config: configs/system.conf
+2026-11-07T21:50:53Z I! Starting Telegraf 1.40.3 brought to you by InfluxData the makers of InfluxDB
+2026-11-07T21:50:53Z I! Available plugins: 244 inputs, 9 aggregators, 35 processors, 26 parsers, 68 outputs, 8 secret stores
+2026-11-07T21:50:53Z I! Loaded inputs: cpu mem system
+2026-11-07T21:50:53Z I! Loaded aggregators:
+2026-11-07T21:50:53Z I! Loaded processors:
+2026-11-07T21:50:53Z I! Loaded secretstores:
+2026-11-07T21:50:53Z I! Loaded outputs: file
+2026-11-07T21:50:53Z I! Tags enabled: host=boardwalk-01 project=noticeboard site=pier-a
+2026-11-07T21:50:53Z I! [agent] Config: Interval:2s, Quiet:false, Hostname:"boardwalk-01", Flush Interval:2s
+2026-11-07T21:50:53Z W! [agent] The default value of 'skip_processors_after_aggregators' will change to 'true' with Telegraf v1.41.0! If you need the current default behavior, please explicitly set the option to 'false'!
+2026-11-07T21:51:02Z I! [agent] Hang on, flushing any cached metrics before shutdown
+2026-11-07T21:51:02Z I! [agent] Stopping running outputs
+timeout exit=124 (124 means timeout stopped a still-running agent, as designed)
+
+lines in outputs/system.lp: 24
+measurements seen:
+      4 cpu
+      5 mem
+     15 system
+
+== the file output, verbatim ==
+system,host=boardwalk-01,project=noticeboard,site=pier-a load15=0.67,n_cpus=4i,n_physical_cpus=4i,n_users=0i,n_unique_users=0i,load1=0.64,load5=0.89 1794088254000000000
+system,host=boardwalk-01,project=noticeboard,site=pier-a uptime=34719i 1794088254000000000
+system,host=boardwalk-01,project=noticeboard,site=pier-a uptime_format=" 9:38" 1794088254000000000
+mem,host=boardwalk-01,project=noticeboard,site=pier-a vmalloc_total=14073748835531776i,vmalloc_used=42094592i,committed_as=4018446336i,huge_pages_free=0i,sreclaimable=102477824i,total=8319905792i,swap_free=595451904i,available=1609584640i,active=1676804096i,dirty=21204992i,huge_pages_total=0i,low_free=0i,mapped=631222272i,shared=105029632i,buffered=12288i,huge_page_size=2097152i,swap_cached=207781888i,vmalloc_chunk=0i,commit_limit=5233688576i,sunreclaim=154849280i,write_back_tmp=0i,used_percent=80.65381171085261,cached=1818443776i,inactive=861036544i,write_back=0i,slab=257327104i,free=173969408i,high_total=0i,swap_total=1073737728i,used=6710321152i,available_percent=19.346188289147396,high_free=0i,low_total=0i,page_tables=21827584i 1794088254000000000
+system,host=boardwalk-01,project=noticeboard,site=pier-a load1=0.64,load5=0.89,load15=0.67,n_cpus=4i,n_physical_cpus=4i,n_users=0i,n_unique_users=0i 1794088256000000000
+system,host=boardwalk-01,project=noticeboard,site=pier-a uptime=34721i 1794088256000000000
+system,host=boardwalk-01,project=noticeboard,site=pier-a uptime_format=" 9:38" 1794088256000000000
+cpu,cpu=cpu-total,host=boardwalk-01,project=noticeboard,site=pier-a usage_user=43.83561643836796,usage_idle=28.019925280203314,usage_iowait=15.691158156905248,usage_irq=0,usage_softirq=1.120797011208529,usage_guest=0,usage_guest_nice=0,usage_system=9.962640099618785,usage_nice=0,usage_steal=1.3698630136989987,usage_active=71.98007471979669 1794088256000000000
+mem,host=boardwalk-01,project=noticeboard,site=pier-a dirty=23748608i,low_total=0i,slab=257179648i,vmalloc_chunk=0i,available_percent=18.90350019963303,active=1733337088i,available=1572753408i,used=6747152384i,used_percent=81.09649980036697,cached=1810694144i,committed_as=4031225856i,high_total=0i,huge_pages_total=0i,mapped=635895808i,commit_limit=5233688576i,page_tables=22667264i,sreclaimable=102395904i,swap_free=596791296i,total=8319905792i,sunreclaim=154783744i,high_free=0i,huge_pages_free=0i,inactive=847532032i,low_free=0i,shared=106369024i,swap_cached=208457728i,write_back=0i,buffered=12288i,huge_page_size=2097152i,swap_total=1073737728i,vmalloc_total=14073748835531776i,vmalloc_used=42176512i,write_back_tmp=0i,free=146132992i 1794088256000000000
+mem,host=boardwalk-01,project=noticeboard,site=pier-a total=8319905792i,available=1515298816i,used=6804606976i,swap_cached=211476480i,write_back_tmp=0i,available_percent=18.212932380280492,high_free=0i,huge_page_size=2097152i,huge_pages_total=0i,low_total=0i,page_tables=21987328i,write_back=0i,buffered=12288i,commit_limit=5233688576i,mapped=644268032i,vmalloc_total=14073748835531776i,high_total=0i,low_free=0i,swap_free=597966848i,committed_as=4068020224i,active=948305920i,huge_pages_free=0i,slab=256753664i,sunreclaim=154767360i,free=133496832i,used_percent=81.78706761971951,cached=1766621184i,inactive=1639944192i,sreclaimable=101986304i,swap_total=1073737728i,vmalloc_used=42160128i,dirty=25305088i,shared=107544576i,vmalloc_chunk=0i 1794088258000000000
+system,host=boardwalk-01,project=noticeboard,site=pier-a n_cpus=4i,n_physical_cpus=4i,n_users=0i,n_unique_users=0i,load1=0.59,load5=0.88,load15=0.67 1794088258000000000
+system,host=boardwalk-01,project=noticeboard,site=pier-a uptime=34723i 1794088258000000000
+system,host=boardwalk-01,project=noticeboard,site=pier-a uptime_format=" 9:38" 1794088258000000000
+cpu,cpu=cpu-total,host=boardwalk-01,project=noticeboard,site=pier-a usage_system=11.09725685783367,usage_idle=35.91022443887741,usage_nice=0,usage_softirq=0.7481296758080559,usage_guest=0,usage_guest_nice=0,usage_user=48.87780548617168,usage_iowait=2.4937655860381933,usage_irq=0,usage_steal=0.8728179551101073,usage_active=64.0897755611226 1794088258000000000
+mem,host=boardwalk-01,project=noticeboard,site=pier-a free=239947776i,high_free=0i,low_total=0i,vmalloc_used=42160128i,used=6694465536i,write_back=0i,cached=1766850560i,high_total=0i,shared=103845888i,swap_free=598097920i,vmalloc_total=14073748835531776i,available_percent=19.53676275472904,huge_pages_free=0i,huge_page_size=2097152i,inactive=1468112896i,slab=257241088i,sreclaimable=102477824i,vmalloc_chunk=0i,write_back_tmp=0i,active=1027702784i,huge_pages_total=0i,swap_cached=211750912i,used_percent=80.46323724527096,buffered=20480i,commit_limit=5233688576i,committed_as=3994148864i,page_tables=21811200i,sunreclaim=154763264i,mapped=645763072i,available=1625440256i,low_free=0i,swap_total=1073737728i,total=8319905792i,dirty=26013696i 1794088260000000000
+system,host=boardwalk-01,project=noticeboard,site=pier-a n_unique_users=0i,load1=0.59,load5=0.88,load15=0.67,n_cpus=4i,n_physical_cpus=4i,n_users=0i 1794088260000000000
+system,host=boardwalk-01,project=noticeboard,site=pier-a uptime=34725i 1794088260000000000
+system,host=boardwalk-01,project=noticeboard,site=pier-a uptime_format=" 9:38" 1794088260000000000
+cpu,cpu=cpu-total,host=boardwalk-01,project=noticeboard,site=pier-a usage_iowait=1.631116687574095,usage_irq=0,usage_softirq=0.37641154328973114,usage_steal=1.505646173154645,usage_active=60.225846925854874,usage_system=11.543287327519423,usage_idle=39.774153074145126,usage_guest=0,usage_guest_nice=0,usage_user=45.16938519461939,usage_nice=0 1794088260000000000
+system,host=boardwalk-01,project=noticeboard,site=pier-a n_unique_users=0i,load1=0.59,load5=0.88,load15=0.67,n_cpus=4i,n_physical_cpus=4i,n_users=0i 1794088262000000000
+system,host=boardwalk-01,project=noticeboard,site=pier-a uptime=34727i 1794088262000000000
+system,host=boardwalk-01,project=noticeboard,site=pier-a uptime_format=" 9:38" 1794088262000000000
+cpu,cpu=cpu-total,host=boardwalk-01,project=noticeboard,site=pier-a usage_user=38.451935081125654,usage_irq=0,usage_softirq=0.3745318352052164,usage_steal=0.3745318352052164,usage_active=46.192259675497375,usage_system=4.993757802736218,usage_idle=53.807740324502625,usage_nice=0,usage_iowait=1.997503121105842,usage_guest=0,usage_guest_nice=0 1794088262000000000
+mem,host=boardwalk-01,project=noticeboard,site=pier-a used=6755979264i,cached=1773547520i,commit_limit=5233688576i,free=173985792i,huge_pages_total=0i,low_free=0i,shared=105971712i,slab=257241088i,swap_cached=211816448i,vmalloc_chunk=0i,vmalloc_total=14073748835531776i,write_back=0i,used_percent=81.20259330936425,high_free=0i,high_total=0i,huge_pages_free=0i,mapped=648847360i,available=1563926528i,inactive=1446875136i,low_total=0i,active=1064337408i,sunreclaim=154763264i,vmalloc_used=42143744i,total=8319905792i,committed_as=3985403904i,dirty=28749824i,swap_free=598134784i,write_back_tmp=0i,huge_page_size=2097152i,swap_total=1073737728i,available_percent=18.797406690635757,buffered=20480i,page_tables=21876736i,sreclaimable=102477824i 1794088262000000000

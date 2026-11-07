@@ -1,0 +1,32 @@
+== the fixture: fixtures/readings.json ==
+[
+  {"sensor": "temp-north", "room": "hall-a", "temperature_c": 21.5, "humidity_pct": 44, "battery_pct": 87},
+  {"sensor": "temp-south", "room": "hall-b", "temperature_c": 23.0, "humidity_pct": 41, "battery_pct": 92},
+  {"sensor": "door-counter", "room": "lobby", "opens": 17, "battery_pct": 78}
+]
+
+== --test on configs/fixture.conf (JSON parsed, tags chosen, field renamed) ==
+2026-11-07T21:51:03Z W! Strict environment variable handling is the new default starting with v1.38.0! If your configuration does not work with strict handling please explicitly add the --non-strict-env-handling flag to switch to the previous behavior!
+2026-11-07T21:51:03Z I! Loading config: configs/fixture.conf
+2026-11-07T21:51:03Z I! Starting Telegraf 1.40.3 brought to you by InfluxData the makers of InfluxDB
+2026-11-07T21:51:03Z I! Available plugins: 244 inputs, 9 aggregators, 35 processors, 26 parsers, 68 outputs, 8 secret stores
+2026-11-07T21:51:03Z I! Loaded inputs: file
+2026-11-07T21:51:03Z I! Loaded aggregators:
+2026-11-07T21:51:03Z I! Loaded processors: rename
+2026-11-07T21:51:03Z I! Loaded secretstores:
+2026-11-07T21:51:03Z W! Outputs are not used in testing mode!
+2026-11-07T21:51:03Z I! Tags enabled: host=boardwalk-01
+2026-11-07T21:51:03Z W! [agent] The default value of 'skip_processors_after_aggregators' will change to 'true' with Telegraf v1.41.0! If you need the current default behavior, please explicitly set the option to 'false'!
+> noticeboard_reading,host=boardwalk-01,room=hall-a,sensor=temp-north battery_pct=87,humidity_pct=44,temp_c=21.5 1794088263000000000
+> noticeboard_reading,host=boardwalk-01,room=hall-b,sensor=temp-south battery_pct=92,humidity_pct=41,temp_c=23 1794088263000000000
+> noticeboard_reading,host=boardwalk-01,room=lobby,sensor=door-counter battery_pct=78,opens=17 1794088263000000000
+exit=0
+
+== --once through the real file output ==
+2026-11-07T21:51:03Z W! [agent] The default value of 'skip_processors_after_aggregators' will change to 'true' with Telegraf v1.41.0! If you need the current default behavior, please explicitly set the option to 'false'!
+2026-11-07T21:51:03Z I! [agent] Hang on, flushing any cached metrics before shutdown
+2026-11-07T21:51:03Z I! [agent] Stopping running outputs
+outputs/fixture.lp:
+noticeboard_reading,host=boardwalk-01,room=hall-a,sensor=temp-north humidity_pct=44,battery_pct=87,temp_c=21.5 1794088264000000000
+noticeboard_reading,host=boardwalk-01,room=hall-b,sensor=temp-south humidity_pct=41,battery_pct=92,temp_c=23 1794088264000000000
+noticeboard_reading,host=boardwalk-01,room=lobby,sensor=door-counter opens=17,battery_pct=78 1794088264000000000

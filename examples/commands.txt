@@ -1,0 +1,85 @@
+telegraf — the distilled commands
+====================================================================
+Placeholders: <file> is a config of yours; <name> is a plugin
+name. Every command below is one the lab ran (transcripts in
+telegraf-lab/transcripts/) or names as documented-only in the
+guide. Run config commands from the folder the config's paths
+are relative to — the lab ran everything from telegraf-lab/.
+
+INSTALL AND DISCOVERY (chapters 3-4)
+--------------------------------------------------------------------
+  telegraf version                 # the check every install
+                                   # must pass (1.40.3 in the lab)
+  telegraf --help                  # global options, 49 lines
+  telegraf --input-list            # every input in this binary
+  telegraf --output-list           # every output in this binary
+  telegraf --usage cpu             # one plugin's sample settings
+  telegraf config create \
+    --input-filter cpu:mem \
+    --output-filter file           # generate a valid starting
+                                   # config; cut it down, don't
+                                   # type one from memory
+
+PROVE BEFORE YOU RUN (chapter 5)
+--------------------------------------------------------------------
+  telegraf config check --config <file>
+                                   # loads? sane? exits 0 or says why
+  telegraf --config <file> --test  # one real gather, printed with
+                                   # '>' lines, outputs NOT used
+  telegraf --config <file> --once  # one real gather, written
+                                   # through the real outputs, exit
+
+RUN (chapter 6)
+--------------------------------------------------------------------
+  telegraf --config <file>         # the resident agent; Ctrl-C
+                                   # stops it, flushing first
+  timeout 9 telegraf --config <file>
+                                   # the lab's bounded form, for
+                                   # measured runs only
+
+READING POINTS (chapter 7)
+--------------------------------------------------------------------
+  # measurement,tag=value,tag=value field=1,field=2.5 1794088252000000000
+  #   ^ name      ^ tags (which)     ^ fields (how much)  ^ ns time
+  # field types: 2.5 float, 4i integer, 4u unsigned, "x" string
+
+FILES AND PARSERS (chapter 8, configs/fixture.conf)
+--------------------------------------------------------------------
+  # [[inputs.file]] files + data_format = "json"
+  #   tag_keys = ["sensor", "room"]   <- the keys that become tags
+  #   name_override = "noticeboard_reading"
+  telegraf --config configs/fixture.conf --test
+                                   # 3 JSON objects -> 3 points;
+                                   # temperature_c renamed temp_c
+                                   # by processors.rename (ch. 10)
+
+LISTENING (chapter 9, configs/http.conf, 127.0.0.1:18083)
+--------------------------------------------------------------------
+  curl -X POST --data-binary \
+    'noticeboard_post,sensor=door-01,room=hall-a opens=3i,temperature_c=22.1 1794088200000000000' \
+    http://127.0.0.1:18083/telegraf
+                                   # 204 = accepted; the point
+                                   # lands in the file output with
+                                   # host=<hostname> added
+  curl -X POST --data-binary 'this is not line protocol' \
+    http://127.0.0.1:18083/telegraf
+                                   # 400 = refused at the door
+
+AGGREGATION (chapter 10, configs/stats.conf)
+--------------------------------------------------------------------
+  # [[aggregators.basicstats]] period = "5s",
+  #   drop_original = true, stats = ["count","min","max","mean"]
+  # posted value=10, 20, 30 -> one line out:
+  # hall_temp,...,sensor=temp-north value_max=30,value_mean=20,value_count=3,value_min=10
+
+BUFFERING (chapter 11, configs/flush.conf)
+--------------------------------------------------------------------
+  # [agent] interval = "1s"  flush_interval = "3s"
+  # output file: 0 lines to t=+3s, 2 at +4s, 6 at +7s, 9 at +10s,
+  # 10 after the shutdown flush — batches, not a stream
+
+BROKEN, ON PURPOSE (chapter 15, configs/broken.conf)
+--------------------------------------------------------------------
+  telegraf --config configs/broken.conf --test
+  # E! ... error parsing cpuu, undefined but requested input: cpuu
+  # exit 1. Same ladder for TOML errors, with a line number.

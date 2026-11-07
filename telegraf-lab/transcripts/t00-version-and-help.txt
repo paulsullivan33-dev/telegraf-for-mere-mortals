@@ -1,0 +1,104 @@
+== binary ==
+/home/hatch/workspace/.batch-351-363/scratch-telegraf/telegraf-1.40.3/usr/bin/telegraf
+-rwxr-xr-x 1 root root 314M Nov  2 17:24 /home/hatch/workspace/.batch-351-363/scratch-telegraf/telegraf-1.40.3/usr/bin/telegraf
+
+== telegraf version ==
+Telegraf 1.40.3 (git: HEAD@41b45388)
+
+== telegraf --help (full) ==
+NAME:
+   Telegraf - The plugin-driven server agent for collecting & reporting metrics.
+
+USAGE:
+   Telegraf [global options] command [command options]
+
+COMMANDS:
+   version  print current version to stdout
+   config   commands for generating and migrating configurations
+   secrets  commands for listing, adding and removing secrets on all known secret stores
+   plugins  commands for printing available plugins
+   help, h  Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --test-wait value                                      wait up to this many seconds for service inputs to complete in test mode (default: 0)
+   --config-url-retry-attempts value                      Number of attempts to obtain a remote configuration via a URL during startup. Set to -1 for unlimited attempts. (default: 3)
+   --usage value                                          print usage for a plugin, ie, 'telegraf --usage mysql'
+   --pprof-addr value                                     pprof host/IP and port to listen on (e.g. 'localhost:6060')
+   --watch-config value                                   monitoring config changes [notify, poll] of --config and --config-directory options. Notify supports linux, *bsd, and macOS. Poll is required for Windows and checks every 250ms.
+   --watch-debounce-interval value                        Time duration to wait after a config change before reloading (default: 0s)
+   --pidfile value                                        file to write our pid to
+   --password value                                       password to unlock secret stores
+   --old-env-behavior                                     switch back to pre v1.27 environment replacement behavior (default: false)
+   --print-plugin-config-source                           print the source for a given plugin (default: false)
+   --once                                                 run one gather and exit (default: false)
+   --debug                                                turn on debug logging (default: false)
+   --quiet                                                run in quiet mode (default: false)
+   --unprotected                                          do not protect secrets in memory (default: false)
+   --test                                                 enable test mode: gather metrics, print them out, and exit. Note: Test mode only runs inputs, processors, and aggregators, but not outputs (default: false)
+   --select value [ --select value ]                      enable only plugins with labels matching the given key-value selection. If no selectors are provided, all plugins are enabled. Multiple key-value pairs in an option will be combined by AND, multiple options are combined by OR. Key and value are separated by an equal sign, multiple pairs are separated by semi-colon, values do accept wildcards.
+   --watch-interval value                                 Time duration to check for updates to config files specified by --config and --config-directory options. Use with '--watch-config poll' (default: disabled)
+   --config-url-watch-interval value                      Time duration to check for updates to URL based configuration files (default: disabled)
+   --deprecation-list                                     print all deprecated plugins or plugin options (default: false)
+   --input-list                                           print available input plugins (default: false)
+   --output-list                                          print available output plugins (default: false)
+   --version                                              DEPRECATED: display the version and exit (default: false)
+   --sample-config                                        DEPRECATED: print out full sample configuration (default: false)
+   --plugin-directory value                               DEPRECATED: path to directory containing external plugins
+   --config value [ --config value ]                      configuration file to load
+   --config-directory value [ --config-directory value ]  directory containing additional *.conf files
+   --section-filter value                                 filter the sections to print, separator is ':'. Valid values are 'agent', 'global_tags', 'outputs', 'processors', 'aggregators' and 'inputs'
+   --input-filter value                                   filter the inputs to enable, separator is ':'
+   --output-filter value                                  filter the outputs to enable, separator is ':'
+   --aggregator-filter value                              filter the aggregators to enable, separator is ':'
+   --processor-filter value                               filter the processors to enable, separator is ':'
+   --secretstore-filter value                             filter the secret stores to enable, separator is ':'
+   --strict-env-handling                                  enforces strict and secure handling of environment variables; will not work with non-string settings (default: false)
+   --non-strict-env-handling                              allow unsafe non-strict handling of environment variables to replace non-string settings (default: false)
+   --help, -h                                             show help
+
+== plugin counts from the binary itself ==
+inputs:  246 lines of --input-list
+outputs: 70 lines of --output-list
+
+== a sample config, generated by the tool (first 25 lines) ==
+# Telegraf Configuration
+#
+# Telegraf is entirely plugin driven. All metrics are gathered from the
+# declared inputs, and sent to the declared outputs.
+#
+# Plugins must be declared in here to be active.
+# To deactivate a plugin, comment out the name and any variables.
+#
+# Use 'telegraf -config telegraf.conf -test' to see what metrics a config
+# file would generate.
+#
+# Environment variables can be used anywhere in this config file, simply surround
+# them with ${}. For strings the variable must be within quotes (ie, "${STR_VAR}"),
+# for numbers and booleans they should be plain (ie, ${INT_VAR}, ${BOOL_VAR})
+
+
+# Global tags can be specified here in key="value" format.
+[global_tags]
+  # dc = "us-east-1" # will tag all metrics with dc=us-east-1
+  # rack = "1a"
+  ## Environment variables can be used as tags, and throughout the config file
+  # user = "$USER"
+
+# Configuration for telegraf agent
+[agent]
+
+== one plugin's own sample settings: telegraf --usage cpu (first 14 lines) ==
+
+# Read metrics about cpu usage
+[[inputs.cpu]]
+  ## Whether to report per-cpu stats or not
+  percpu = true
+  ## Whether to report total system cpu stats or not
+  totalcpu = true
+  ## If true, collect raw CPU time metrics
+  collect_cpu_time = false
+  ## If true, compute and report the sum of all non-idle CPU states
+  ## NOTE: The resulting 'time_active' field INCLUDES 'iowait'!
+  report_active = false
+  ## If true and the info is available then add core_id and physical_id tags
+  core_tags = false

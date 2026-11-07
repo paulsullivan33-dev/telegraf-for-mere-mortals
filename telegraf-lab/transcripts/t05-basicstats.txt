@@ -1,0 +1,10 @@
+== live run: configs/stats.conf, basicstats over 5s windows, 14 seconds ==
+2026-11-07T21:51:16Z I! [inputs.http_listener_v2] Listening on 127.0.0.1:18083
+POST value=10 -> HTTP 204
+POST value=20 -> HTTP 204
+POST value=30 -> HTTP 204
+waiting for the 5s aggregation window to close and flush...
+
+outputs/stats.lp (the three originals were dropped; only the summary remains):
+hall_temp,host=boardwalk-01,sensor=temp-north value_max=30,value_mean=20,value_count=3,value_min=10 1794088281000000000
+agent stopped by timeout

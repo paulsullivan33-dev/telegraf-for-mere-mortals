@@ -1,0 +1,45 @@
+== config check on configs/system.conf ==
+2026-11-07T21:50:51Z W! Strict environment variable handling will be the new default starting with v1.38.0! If your configuration works with strict handling or you don't use environment variables it is safe to ignore this warning. Otherwise please explicitly add the --non-strict-env-handling flag!
+2026-11-07T21:50:51Z I! Loading config: configs/system.conf
+2026-11-07T21:50:51Z W! [agent] The default value of 'skip_processors_after_aggregators' will change to 'true' with Telegraf v1.41.0! If you need the current default behavior, please explicitly set the option to 'false'!
+exit=0
+
+== --test: one gather, printed, no output written ==
+2026-11-07T21:50:51Z W! Strict environment variable handling is the new default starting with v1.38.0! If your configuration does not work with strict handling please explicitly add the --non-strict-env-handling flag to switch to the previous behavior!
+2026-11-07T21:50:51Z I! Loading config: configs/system.conf
+2026-11-07T21:50:51Z I! Starting Telegraf 1.40.3 brought to you by InfluxData the makers of InfluxDB
+2026-11-07T21:50:51Z I! Available plugins: 244 inputs, 9 aggregators, 35 processors, 26 parsers, 68 outputs, 8 secret stores
+2026-11-07T21:50:51Z I! Loaded inputs: cpu mem system
+2026-11-07T21:50:51Z I! Loaded aggregators:
+2026-11-07T21:50:51Z I! Loaded processors:
+2026-11-07T21:50:51Z I! Loaded secretstores:
+2026-11-07T21:50:51Z W! Outputs are not used in testing mode!
+2026-11-07T21:50:51Z I! Tags enabled: host=boardwalk-01 project=noticeboard site=pier-a
+2026-11-07T21:50:51Z W! [agent] The default value of 'skip_processors_after_aggregators' will change to 'true' with Telegraf v1.41.0! If you need the current default behavior, please explicitly set the option to 'false'!
+> mem,host=boardwalk-01,project=noticeboard,site=pier-a active=1674760192u,available=1625309184u,available_percent=19.53518735227525,buffered=12288u,cached=1822842880u,commit_limit=5233688576u,committed_as=4015116288u,dirty=23674880u,free=184647680u,high_free=0u,high_total=0u,huge_page_size=2097152u,huge_pages_free=0u,huge_pages_total=0u,inactive=830955520u,low_free=0u,low_total=0u,mapped=640425984u,page_tables=21913600u,shared=104419328u,slab=257351680u,sreclaimable=102481920u,sunreclaim=154869760u,swap_cached=205701120u,swap_free=595161088u,swap_total=1073737728u,total=8319905792u,used=6694596608u,used_percent=80.46481264772476,vmalloc_chunk=0u,vmalloc_total=14073748835531776u,vmalloc_used=42147840u,write_back=0u,write_back_tmp=0u 1794088251000000000
+> system,host=boardwalk-01,project=noticeboard,site=pier-a load1=0.61,load15=0.67,load5=0.89,n_cpus=4i,n_physical_cpus=4i,n_unique_users=0i,n_users=0i 1794088251000000000
+> system,host=boardwalk-01,project=noticeboard,site=pier-a uptime=34717u 1794088251000000000
+> system,host=boardwalk-01,project=noticeboard,site=pier-a uptime_format=" 9:38" 1794088251000000000
+> cpu,cpu=cpu-total,host=boardwalk-01,project=noticeboard,site=pier-a usage_active=53.96039604037428,usage_guest=0,usage_guest_nice=0,usage_idle=46.03960395962572,usage_iowait=7.425742574215968,usage_irq=0,usage_nice=0,usage_softirq=0.49504950494547995,usage_steal=1.9801980197847338,usage_system=7.425742574170943,usage_user=36.633663366078075 1794088252000000000
+exit=0
+
+== --once: one gather, written through the real output, then exit ==
+2026-11-07T21:50:52Z W! Strict environment variable handling is the new default starting with v1.38.0! If your configuration does not work with strict handling please explicitly add the --non-strict-env-handling flag to switch to the previous behavior!
+2026-11-07T21:50:52Z I! Loading config: configs/system.conf
+2026-11-07T21:50:52Z I! Starting Telegraf 1.40.3 brought to you by InfluxData the makers of InfluxDB
+2026-11-07T21:50:52Z I! Available plugins: 244 inputs, 9 aggregators, 35 processors, 26 parsers, 68 outputs, 8 secret stores
+2026-11-07T21:50:52Z I! Loaded inputs: cpu mem system
+2026-11-07T21:50:52Z I! Loaded aggregators:
+2026-11-07T21:50:52Z I! Loaded processors:
+2026-11-07T21:50:52Z I! Loaded secretstores:
+2026-11-07T21:50:52Z I! Loaded outputs: file
+2026-11-07T21:50:52Z I! Tags enabled: host=boardwalk-01 project=noticeboard site=pier-a
+2026-11-07T21:50:52Z W! [agent] The default value of 'skip_processors_after_aggregators' will change to 'true' with Telegraf v1.41.0! If you need the current default behavior, please explicitly set the option to 'false'!
+2026-11-07T21:50:53Z I! [agent] Hang on, flushing any cached metrics before shutdown
+2026-11-07T21:50:53Z I! [agent] Stopping running outputs
+exit=0
+lines written to outputs/system.lp: 5
+measurements seen:
+      1 cpu
+      1 mem
+      3 system

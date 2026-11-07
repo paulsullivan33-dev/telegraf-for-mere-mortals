@@ -1,0 +1,29 @@
+site_name: Telegraf for Mere Mortals
+site_description: Collect measurements on every host and pass them on. How the agent gathers, tags, shapes, buffers and forwards metrics, what a tag decides forever, and what Telegraf pointedly does not do.
+site_url: https://paulsullivan33-dev.github.io/telegraf-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What Telegraf Is: what-telegraf-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing Telegraf: installing-telegraf.md
+  - The Config File: the-config-file.md
+  - Test Before You Run: test-before-you-run.md
+  - Your First Agent: your-first-agent.md
+  - Measurements, Tags and Fields: measurements-tags-and-fields.md
+  - Reading Files and Parsers: reading-files-and-parsers.md
+  - Inputs That Listen: inputs-that-listen.md
+  - Processors and Aggregators: processors-and-aggregators.md
+  - Outputs, Buffering and Flush: outputs-and-flush.md
+  - Running It for Real: running-it-for-real.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md
